@@ -1,232 +1,183 @@
-/* Réinitialisation de base */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: sans-serif;
-  background-color: #f5f5f5;
-  color: #333;
-  min-height: 100vh;
-}
-
-header {
-  text-align: center;
-  padding: 20px 0;
-}
-
-h1 {
-  font-size: 24px;
-}
-
-/* ========== Header commun ========== */
-.site-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: #fff;
-  border-bottom: 1px solid #ddd;
-  padding: 10px 20px;
-}
-
-.site-logo {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.site-header nav {
-  flex: 1;
-  text-align: center;
-}
-
-.btn-accueil {
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  color: #333;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #fafafa;
-}
-
-.btn-accueil:hover {
-  background-color: #f0f0f0;
-}
-
-.profile-link img {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-/* Petit header interne aux pages */
-.page-header {
-  padding: 16px 20px;
-  border-bottom: 1px solid #eee;
-}
-
-.conteneur {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; /* colonnes de hauteurs indépendantes */
-  gap: 20px;
-  padding: 0 20px 20px;
-  flex-wrap: wrap;
-}
-
-section {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 20px;
-  width: 100%;
-  max-width: 450px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-h2 {
-  font-size: 18px;
-  margin-bottom: 15px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 8px;
-}
-
-/* --- Liste de messages --- */
-.liste-messages {
-  list-style: none;
-}
-
-.message-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 12px 0;
-  border-bottom: 1px solid #eee;
-}
-
-.message-item:last-child {
-  border-bottom: none;
-}
-
-.avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: #ddd;
-  flex-shrink: 0;
-}
-
-.message-info .en-tete {
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  margin-bottom: 4px;
-}
-
-.message-info .nom {
-  font-weight: bold;
-}
-
-.message-info .temps {
-  color: #888;
-  white-space: nowrap;
-  margin-left: 10px;
-}
-
-.message-info .extrait {
-  font-size: 13px;
-  color: #555;
-}
-
-/* --- Filtres utilisateurs --- */
-.filtre-utilisateurs summary {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  padding: 10px;
-  font-weight: bold;
-  background-color: #f1f1f1;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  margin-bottom: 10px;
-}
-
-.form-filtre {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-top: 10px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  background-color: #fafafa;
-}
-
-.form-filtre input,
-.form-filtre select {
-  padding: 8px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.form-filtre button {
-  padding: 8px;
-  font-size: 14px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.form-filtre button:hover {
-  background-color: #0056b3;
-}
-
-/* --- Tableau des utilisateurs actifs --- */
-.utilisateurs-actifs table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.utilisateurs-actifs thead th {
-  text-align: left;
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
-}
-
-.utilisateurs-actifs tbody tr {
-  border-bottom: 1px solid #eee;
-}
-
-.utilisateurs-actifs tbody tr:last-child {
-  border-bottom: none;
-}
-
-.user-col {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px;
-}
-
-.user-info .nom {
-  font-weight: bold;
-  display: block;
-}
-
-.user-info .extrait {
-  font-size: 12px;
-  color: #888;
-}
-
-.utilisateurs-actifs td {
-  padding: 10px;
-  vertical-align: middle;
-}
+/* ====================================
+   1) Variables et reset global
+   ==================================== */
+   :root {
+    --bleu-primaire:   #4A90E2;
+    --bleu-secondaire: #3582C7;
+    --gris-fond:       #F2F2F2;
+    --blanc-carte:     #FCFCFC;
+    --gris-border:     #A0A0A0;
+    --texte:           #333333;
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Verdana, Geneva, sans-serif;
+    background: var(--gris-fond);
+    color: var(--texte);
+    margin: 0;
+  }
+  
+  /* ====================================
+     2) Header full-width + centré
+     ==================================== */
+  .site-header {
+    width: 100%;
+    background: linear-gradient(to bottom,
+                  var(--bleu-primaire),
+                  var(--bleu-secondaire));
+  }
+  .header-inner {
+    max-width: 1024px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    padding: 0 20px;
+  }
+  
+  .site-logo {
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  }
+  
+  .btn-accueil {
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 3px;
+    background: none;
+    transition: background-color 0.2s;
+  }
+  .btn-accueil:hover {
+    background-color: rgba(255,255,255,0.2);
+  }
+  
+  .profile-link img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--gris-border);
+    transition: border-color 0.2s;
+  }
+  .profile-link:hover img {
+    border-color: var(--bleu-primaire);
+  }
+  
+  /* ====================================
+     3) Contenu principal centré
+     ==================================== */
+  .page-content {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  
+  /* ====================================
+     4) Layout des sections
+     ==================================== */
+  .conteneur {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  section {
+    background: var(--blanc-carte);
+    border: 1px solid var(--gris-border);
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    padding: 16px;
+    flex: 1;
+    max-width: 450px;
+  }
+  
+  /* Titres de section */
+  section h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 6px;
+  }
+  
+  /* ------------------------------------
+     Messages directs
+     ------------------------------------ */
+  .liste-messages {
+    list-style: none;
+  }
+  
+  /* ------------------------------------
+     Filtres & tableau Utilisateurs actifs
+     ------------------------------------ */
+  .filtre-utilisateurs summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 8px 12px;
+    background: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .filtre-utilisateurs form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #fafafa;
+  }
+  .filtre-utilisateurs input,
+  .filtre-utilisateurs select {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  .filtre-utilisateurs button {
+    align-self: flex-end;
+    padding: 6px 12px;
+    background: linear-gradient(to bottom, #6EB7FF, var(--bleu-primaire));
+    color: #fff;
+    border: 1px solid #3A7EC8;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .filtre-utilisateurs button:hover {
+    background: linear-gradient(to bottom, var(--bleu-primaire), #3A7EC8);
+  }
+  
+  .utilisateurs-actifs table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .utilisateurs-actifs th,
+  .utilisateurs-actifs td {
+    text-align: left;
+    padding: 8px;
+  }
+  .utilisateurs-actifs th {
+    border-bottom: 1px solid #ddd;
+  }
+  .utilisateurs-actifs tr + tr {
+    border-top: 1px solid #eee;
+  }
+  

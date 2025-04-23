@@ -8,61 +8,60 @@
 </head>
 <body>
 
-  <!-- ===== Header commun ===== -->
+  <!-- Header full-width -->
   <header class="site-header">
-    <div class="site-logo">MiniTchat</div>
-    <nav>
-      <a href="./home.html" class="btn-accueil">Accueil</a>
-    </nav>
-    <a href="./profile.html" class="profile-link" title="Voir mon profil">
-      <img src="avatar-placeholder.png" alt="Photo de profil">
-    </a>
+    <div class="header-inner">
+      <div class="site-logo">MiniTchat</div>
+      <nav>
+        <a href="home.html" class="btn-accueil">Accueil</a>
+      </nav>
+      <a href="profile.html" class="profile-link" title="Voir mon profil">
+        <img src="avatar-placeholder.png" alt="Photo de profil">
+      </a>
+    </div>
   </header>
 
-  <!-- Titre de la page -->
-  <header class="page-header">
-    <h1>Page d’accueil</h1>
-  </header>
+  <!-- Contenu centré -->
+  <main class="page-content">
 
-  <main class="conteneur">
-    <!-- Colonne de gauche : Messages directs -->
-    <section class="messages-directs">
-      <h2>Messages directs</h2>
-      <ul class="liste-messages">
-        <!-- … contenu fictif ou réel … -->
-      </ul>
-    </section>
+    <div class="conteneur">
+      <!-- Messages directs -->
+      <section class="messages-directs">
+        <h2>Messages directs</h2>
+        <ul class="liste-messages">
+          <!-- à remplir dynamiquement -->
+        </ul>
+      </section>
 
-    <!-- Colonne de droite : Utilisateurs actifs -->
-    <section class="utilisateurs-actifs">
-      <h2>Utilisateurs actifs</h2>
+      <!-- Utilisateurs actifs -->
+      <section class="utilisateurs-actifs">
+        <h2>Utilisateurs actifs</h2>
 
-      <details class="filtre-utilisateurs">
-        <summary>
-          <span>Filtres</span> 🔍
-        </summary>
-        <form class="form-filtre">
-          <input type="text" name="nom" placeholder="Nom">
-          <select name="genre">
-            <option disabled selected>Genre</option>
-            <option>Homme</option>
-            <option>Femme</option>
-            <option>Autre</option>
-          </select>
-          <input type="number" name="age" placeholder="Âge" min="1">
-          <button type="submit">Filtrer</button>
-        </form>
-      </details>
+        <details class="filtre-utilisateurs">
+          <summary>Filtres 🔍</summary>
+          <form class="form-filtre">
+            <input type="text" name="nom" placeholder="Nom">
+            <select name="genre">
+              <option disabled selected>Genre</option>
+              <option>Homme</option>
+              <option>Femme</option>
+              <option>Autre</option>
+            </select>
+            <input type="number" name="age" placeholder="Âge" min="1">
+            <button type="submit">Filtrer</button>
+          </form>
+        </details>
 
-      <table>
-        <thead>
-          <tr><th>Nom</th><th>Genre</th><th>Âge</th></tr>
-        </thead>
-        <tbody>
-          <!-- … utilisateur·rice·s actifs … -->
-        </tbody>
-      </table>
-    </section>
+        <table>
+          <thead>
+            <tr><th>Nom</th><th>Genre</th><th>Âge</th></tr>
+          </thead>
+          <tbody>
+            <!-- à remplir dynamiquement -->
+          </tbody>
+        </table>
+      </section>
+    </div>
   </main>
 
 </body>
