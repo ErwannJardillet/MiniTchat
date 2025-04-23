@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profil – MiniTchat</title>
+  <!-- CSS global (header, boutons, reset…) -->
+  <link rel="stylesheet" href="../Css/styles.css">
+  <!-- CSS spécifique à la page de profil -->
+  <link rel="stylesheet" href="../Css/profile.css">
+</head>
+<body>
+
+  <!-- ===== Header commun ===== -->
+  <header class="site-header">
+    <div class="site-logo">MiniTchat</div>
+    <nav>
+      <a href="home.html" class="btn-accueil">Accueil</a>
+    </nav>
+    <a href="profile.html" class="profile-link" title="Voir mon profil">
+      <img src="avatar-placeholder.png" alt="Photo de profil">
+    </a>
+  </header>
+
+  <!-- Contenu principal -->
+  <main class="profile-container">
+    <section class="profile-card">
+      <h2>Profil</h2>
+      <hr>
+      <div class="profile-content">
+        <figure class="avatar-large">
+          <img src="avatar-placeholder.png" alt="Photo de profil">
+        </figure>
+        <div class="profile-details">
+          <p><span class="label">Nom d’utilisateur :</span>
+             <span class="value"><!-- ici le username --></span>
+          </p>
+          <p><span class="label">Âge :</span>
+             <span class="value"><!-- ici l’âge --></span>
+          </p>
+          <p><span class="label">Sexe :</span>
+             <span class="value"><!-- ici le sexe --></span>
+          </p>
+          <button class="btn-edit">Modifier le profil</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+</body>
+</html>
