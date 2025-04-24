@@ -1,25 +1,13 @@
 const express = require('express');
-const session = require('express-session');
 const cors = require('cors');
-const authRoutes = require('./routes/auth');
-
+const path = require('path');
 const app = express();
 
-app.use(cors({
-    origin: 'http://localhost:5500', // à adapter selon ton front
-    credentials: true
-}));
-
+app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, '../Docs')));
 
-app.use(session({
-    secret: 'superSecretKey',
-    resave: false,
-    saveUninitialized: false
-}));
-
+const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
 
-app.listen(3000, () => {
-    console.log('Serveur backend sur http://localhost:3000');
-});
+app.listen(3000, () => console.log('Server running on http://localhost:3000'));

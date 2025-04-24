@@ -64,5 +64,15 @@
     </div>
   </main>
 
+  <script>
+    const token = localStorage.getItem("token");
+  
+    if (!token) {
+      // Si pas de token, on redirige vers la page de login
+      window.location.href = "/Pages/login.html";
+    }
+  </script>
+  
+
 </body>
 </html>
