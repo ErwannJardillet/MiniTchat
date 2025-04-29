@@ -5,8 +5,14 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../Docs')));
 
+// Sert les fichiers HTML/CSS/JS
+app.use(express.static(path.join(__dirname, '..', 'Docs')));
+
+// Sert les images de profil
+app.use('/avatars', express.static(path.join(__dirname, '..', 'Docs', 'avatars')));
+
+// API
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
 

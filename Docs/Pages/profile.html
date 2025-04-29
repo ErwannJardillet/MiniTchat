@@ -1,51 +1,71 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Profil – MiniTchat</title>
-  <!-- CSS global (header, boutons, reset…) -->
-  <link rel="stylesheet" href="../Css/styles.css">
-  <!-- CSS spécifique à la page de profil -->
-  <link rel="stylesheet" href="../Css/profile.css">
+  <link rel="stylesheet" href="../Css/styles.css" />
+  <link rel="stylesheet" href="../Css/profile.css" />
 </head>
 <body>
 
-  <!-- ===== Header commun ===== -->
   <header class="site-header">
     <div class="site-logo">MiniTchat</div>
     <nav>
       <a href="home.html" class="btn-accueil">Accueil</a>
     </nav>
     <a href="profile.html" class="profile-link" title="Voir mon profil">
-      <img src="avatar-placeholder.png" alt="Photo de profil">
+      <img src="avatar-placeholder.png" alt="Photo de profil" />
     </a>
   </header>
 
-  <!-- Contenu principal -->
   <main class="profile-container">
     <section class="profile-card">
       <h2>Profil</h2>
       <hr>
       <div class="profile-content">
+
         <figure class="avatar-large">
-          <img src="avatar-placeholder.png" alt="Photo de profil">
+          <img id="avatarPreview" src="avatar-placeholder.png" alt="Avatar">
         </figure>
+
         <div class="profile-details">
-          <p><span class="label">Nom d’utilisateur :</span>
-             <span class="value"><!-- ici le username --></span>
+
+          <p>
+            <span class="label" id="avatarLabel" style="display: none;">Changer l'avatar :</span>
+
+            <input type="file" id="avatarInput" class="edit-field" style="display:none" accept="image/*" />
           </p>
-          <p><span class="label">Âge :</span>
-             <span class="value"><!-- ici l’âge --></span>
+
+          <p>
+            <span class="label">Nom d’utilisateur :</span>
+            <span class="value" id="usernameDisplay"></span>
+            <input type="text" id="usernameInput" class="edit-field" style="display:none" />
           </p>
-          <p><span class="label">Sexe :</span>
-             <span class="value"><!-- ici le sexe --></span>
+
+          <p>
+            <span class="label">Âge :</span>
+            <span class="value" id="ageDisplay"></span>
+            <input type="number" id="ageInput" class="edit-field" style="display:none" />
           </p>
-          <button class="btn-edit">Modifier le profil</button>
+
+          <p>
+            <span class="label">Sexe :</span>
+            <span class="value" id="genderDisplay"></span>
+            <select id="genderInput" class="edit-field" style="display:none">
+              <option value="Homme">Homme</option>
+              <option value="Femme">Femme</option>
+              <option value="Autre">Autre</option>
+            </select>
+          </p>
+
+          <button id="editBtn" class="btn-edit">Modifier le profil</button>
+          <button id="saveBtn" class="btn-edit" style="display: none;">Sauvegarder</button>
         </div>
       </div>
     </section>
   </main>
 
+  <script src="/js/profile.js"></script>
 </body>
 </html>

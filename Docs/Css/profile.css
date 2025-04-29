@@ -144,3 +144,24 @@ body {
 .btn-edit:hover {
   background: linear-gradient(to bottom, var(--bleu-primaire), #3A7EC8);
 }
+
+
+
+.popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #d4edda;
+  color: #155724;
+  padding: 12px 20px;
+  border: 1px solid #c3e6cb;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.popup.show {
+  opacity: 1;
+}

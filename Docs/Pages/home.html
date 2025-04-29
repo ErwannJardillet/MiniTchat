@@ -1,78 +1,100 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Page d’accueil – MiniTchat</title>
-  <link rel="stylesheet" href="../Css/home.css"
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Page d’accueil – MiniTchat</title>
+    <link rel="stylesheet" href="../Css/home.css" />
+  </head>
+  <body>
+    <!-- Header full-width -->
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="site-logo">MiniTchat</div>
+        <a href="profile.html" class="profile-link" title="Voir mon profil">
+          <img src="avatar-placeholder.png" alt="Photo de profil" />
+        </a>
+      </div>
+    </header>
 
-  <!-- Header full-width -->
-  <header class="site-header">
-    <div class="header-inner">
-      <div class="site-logo">MiniTchat</div>
-      <nav>
-        <a href="home.html" class="btn-accueil">Accueil</a>
-      </nav>
-      <a href="profile.html" class="profile-link" title="Voir mon profil">
-        <img src="avatar-placeholder.png" alt="Photo de profil">
-      </a>
-    </div>
-  </header>
-
-  <!-- Contenu centré -->
-  <main class="page-content">
-
-    <div class="conteneur">
-      <!-- Messages directs -->
-      <section class="messages-directs">
-        <h2>Messages directs</h2>
-        <ul class="liste-messages">
-          <!-- à remplir dynamiquement -->
-        </ul>
-      </section>
-
-      <!-- Utilisateurs actifs -->
-      <section class="utilisateurs-actifs">
-        <h2>Utilisateurs actifs</h2>
-
-        <details class="filtre-utilisateurs">
-          <summary>Filtres 🔍</summary>
-          <form class="form-filtre">
-            <input type="text" name="nom" placeholder="Nom">
-            <select name="genre">
-              <option disabled selected>Genre</option>
-              <option>Homme</option>
-              <option>Femme</option>
-              <option>Autre</option>
-            </select>
-            <input type="number" name="age" placeholder="Âge" min="1">
-            <button type="submit">Filtrer</button>
-          </form>
-        </details>
-
-        <table>
-          <thead>
-            <tr><th>Nom</th><th>Genre</th><th>Âge</th></tr>
-          </thead>
-          <tbody>
+    <!-- Contenu centré -->
+    <main class="page-content">
+      <div class="conteneur">
+        <!-- Messages directs -->
+        <section class="messages-directs">
+          <h2>Messages directs</h2>
+          <ul class="liste-messages">
             <!-- à remplir dynamiquement -->
-          </tbody>
-        </table>
-      </section>
-    </div>
-  </main>
+          </ul>
+        </section>
 
-  <script>
-    const token = localStorage.getItem("token");
-  
-    if (!token) {
-      // Si pas de token, on redirige vers la page de login
-      window.location.href = "/Pages/login.html";
-    }
-  </script>
-  
+        <!-- Utilisateurs actifs -->
+        <section class="utilisateurs-actifs">
+          <h2>Utilisateurs actifs</h2>
 
-</body>
+          <details class="filtre-utilisateurs">
+            <summary>Filtres 🔍</summary>
+            <form class="form-filtre">
+              <input type="text" name="nom" placeholder="Nom" />
+              <select name="genre">
+                <option disabled selected>Genre</option>
+                <option>Homme</option>
+                <option>Femme</option>
+                <option>Autre</option>
+              </select>
+              <input type="number" name="age" placeholder="Âge" min="1" />
+              <button type="submit">Filtrer</button>
+            </form>
+          </details>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Genre</th>
+                <th>Âge</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- à remplir dynamiquement -->
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </main>
+
+    <script>
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        window.location.href = "/Pages/login.html";
+      } else {
+        console.log("Token actuel :", token);
+
+        fetch("http://localhost:3000/api/auth/me", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+          .then(async (res) => {
+            if (!res.ok) {
+              const message = await res.json();
+              console.error("Erreur serveur :", message);
+              throw new Error("Erreur API");
+            }
+            return res.json();
+          })
+          .then((user) => {
+            if (user.avatar) {
+              document.querySelector(".profile-link img").src =
+                "/" + user.avatar;
+            }
+          })
+          .catch((err) => {
+            console.error("Erreur attrapée :", err);
+            window.location.href = "/Pages/login.html"; // sécurité si problème
+          });
+      }
+    </script>
+  </body>
 </html>

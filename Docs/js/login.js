@@ -20,7 +20,7 @@ loginForm.addEventListener("submit", async (e) => {
   if (res.ok) {
     alert("Connexion réussie !");
     localStorage.setItem("token", data.token); // On stocke le JWT
-    window.location.href = "/Pages/home.html";
+    window.location.href = "/Pages/home.html";  
   } else {
     alert(data.message || "Erreur lors de la connexion");
   }
