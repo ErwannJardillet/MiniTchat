@@ -32,7 +32,7 @@
         <section class="utilisateurs-actifs">
           <h2>Utilisateurs actifs</h2>
 
-          <details class="filtre-utilisateurs">
+          <details class="filtre-utilisateurs" open>
             <summary>Filtres 🔍</summary>
             <form class="form-filtre">
               <input type="text" name="nom" placeholder="Nom" />
@@ -43,7 +43,10 @@
                 <option>Autre</option>
               </select>
               <input type="number" name="age" placeholder="Âge" min="1" />
-              <button type="submit">Filtrer</button>
+              <div class="btn">
+                <button type="submit">Filtrer</button>
+                <button type="reset">Réinitialiser</button>
+              </div>
             </form>
           </details>
 
@@ -63,38 +66,6 @@
       </div>
     </main>
 
-    <script>
-      const token = localStorage.getItem("token");
-
-      if (!token) {
-        window.location.href = "/Pages/login.html";
-      } else {
-        console.log("Token actuel :", token);
-
-        fetch("http://localhost:3000/api/auth/me", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-          .then(async (res) => {
-            if (!res.ok) {
-              const message = await res.json();
-              console.error("Erreur serveur :", message);
-              throw new Error("Erreur API");
-            }
-            return res.json();
-          })
-          .then((user) => {
-            if (user.avatar) {
-              document.querySelector(".profile-link img").src =
-                "/" + user.avatar;
-            }
-          })
-          .catch((err) => {
-            console.error("Erreur attrapée :", err);
-            window.location.href = "/Pages/login.html"; // sécurité si problème
-          });
-      }
-    </script>
+    <script src="/js/home.js"></script>
   </body>
 </html>

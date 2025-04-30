@@ -16,4 +16,4 @@ app.use('/avatars', express.static(path.join(__dirname, '..', 'Docs', 'avatars')
 const authRoutes = require('./routes/auth');
 app.use('/api/auth', authRoutes);
 
-app.listen(3000, () => console.log('Server running on http://localhost:3000'));
+app.listen(3000, () => console.log('Server running on http://localhost:3000/Pages/login.html'));

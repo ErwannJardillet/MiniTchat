@@ -109,3 +109,30 @@ exports.updateProfile = async (req, res) => {
     res.status(500).json({ message: "Erreur serveur lors de la mise à jour du profil" });
   }
 };
+
+exports.getAllUsers = async (req, res) => {
+  try {
+    const { nom, genre, age } = req.query;
+    let sql = "SELECT username, avatar, age, gender FROM users WHERE 1=1";
+    const params = [];
+
+    if (nom) {
+      sql += " AND username LIKE ?";
+      params.push(`%${nom}%`);
+    }
+    if (genre) {
+      sql += " AND gender = ?";
+      params.push(genre);
+    }
+    if (age) {
+      sql += " AND age = ?";
+      params.push(age);
+    }
+
+    const [rows] = await db.query(sql, params);
+    res.json(rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Erreur lors de la récupération des utilisateurs" });
+  }
+};
